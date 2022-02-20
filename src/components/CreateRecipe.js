@@ -64,10 +64,6 @@ const CreateRecipe = () => {
 
         setRecipe([...getRecipe, recipe])
 
-        setPhotos([])
-        setIngredients([])
-        setPrepStep([])
-
         titleRef.current.value = ""
         prepTimeRef.current.value = ""
         nav('/')

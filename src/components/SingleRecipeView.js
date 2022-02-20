@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import mainContext from "../context/mainContext";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-regular-svg-icons'
