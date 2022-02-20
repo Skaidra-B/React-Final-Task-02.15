@@ -8,7 +8,7 @@ const RecipeListPage = ({getRecipe}) => {
 
     return (
         <div>
-            <div className="allRecipes">
+            <div className="pageMargin">
                 {getRecipe.length !== 0 && <Filter/>}
 
             </div>

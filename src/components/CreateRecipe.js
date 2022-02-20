@@ -1,16 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useContext, useRef} from 'react';
 import mainContext from "../context/mainContext";
 import {useNavigate} from "react-router-dom";
 import Ingredient from "./Ingredient";
 
 
-const CreateRecipe = ({}) => {
+const CreateRecipe = () => {
 
-
-    // useEffect(() => {
-    //     setError()
-    // }, [])
 
     const {getRecipe, setRecipe} = useContext(mainContext)
     const nav = useNavigate()
@@ -28,14 +24,11 @@ const CreateRecipe = ({}) => {
     const prepStepsRef = useRef()
 
     const recipe = {
-        // photos: [],
         photos: getPhotos,
         title: "",
         url: "",
-        // ingredients: [],
         ingredients: getIngredients,
         prepTime: "",
-        // prepSteps: [],
         prepSteps: getPrepStep,
         rate: null,
         review: [],
@@ -44,21 +37,16 @@ const CreateRecipe = ({}) => {
     }
 
     function addPhoto() {
-        // recipe.photos.push(photoRef.current.value)
         setPhotos([...getPhotos, photoRef.current.value])
-        // console.log(recipe.photos)
         photoRef.current.value = ""
     }
 
     function addIngredients() {
-        // recipe.ingredients.push(ingredientsRef.current.value)
         setIngredients([...getIngredients, ingredientsRef.current.value])
-        // console.log(recipe.ingredients)
         ingredientsRef.current.value = ""
     }
 
     function addPrepSteps() {
-        // recipe.prepSteps.push(prepStepsRef.current.value)
         setPrepStep([...getPrepStep, prepStepsRef.current.value])
         prepStepsRef.current.value = ""
     }
@@ -82,21 +70,19 @@ const CreateRecipe = ({}) => {
 
         titleRef.current.value = ""
         prepTimeRef.current.value = ""
-        console.log(recipe)
-        console.log(getRecipe)
-        // nav('/')
+        nav('/')
     }
 
     return (
         <div className="d-flex column">
             {error && <div>{error}</div>}
             <div className="d-flex">
-                <input type="text" ref={photoRef} placeholder="Upload photos"/>
+                <input type="text" ref={photoRef} placeholder="Upload photos (at least 2)"/>
                 <button onClick={addPhoto}>ADD</button>
             </div>
             <input type="text" ref={titleRef} placeholder="Title"/>
             <div>
-                <input type="text" ref={ingredientsRef} placeholder="Add ingredients"/>
+                <input type="text" ref={ingredientsRef} placeholder="Add ingredients (at least 2)"/>
                 <button onClick={addIngredients}>ADD</button>
                 <div className="d-flex">
                     {getIngredients.map((x, i) => <Ingredient item={x} key={i} index={i} setIngredients={setIngredients} getIngredients={getIngredients} />)}

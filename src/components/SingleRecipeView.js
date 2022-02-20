@@ -25,19 +25,8 @@ const SingleRecipeView = ({item}) => {
         setRated5,
     } = useContext(mainContext)
 
-    const [getCurrentPhoto, setCurrentPhoto] = useState(item.photos[0])
-    const [getIndex, setIndex] = useState(0)
+    const [currentImg, setCurrentImg] = useState(0)
 
-    const previous = () => {
-        if (getIndex === 0) return
-        setIndex(getIndex - 1)
-        setCurrentPhoto(item.photos[getIndex])
-    }
-    const next = () => {
-        if (getIndex === item.photos.length -1) return
-        setIndex(getIndex + 1)
-        setCurrentPhoto(item.photos[getIndex])
-    }
 
     const commentRef = useRef()
 
@@ -129,9 +118,13 @@ const SingleRecipeView = ({item}) => {
         <div className="singleRecipeCard">
             <div className="d-flex">
                 <div className="carousel">
-                    <FontAwesomeIcon onClick={previous} className="arrow" icon={faAngleLeft}/>
-                    <img src={getCurrentPhoto} alt=""/>
-                    <FontAwesomeIcon onClick={next} className="arrow" icon={faAngleRight}/>
+                    <FontAwesomeIcon onClick={() => {
+                        currentImg > 0 && setCurrentImg(currentImg - 1)
+                    }} className="arrow" icon={faAngleLeft}/>
+                    <img src={item.photos[currentImg]} alt=""/>
+                    <FontAwesomeIcon onClick={() => {
+                        currentImg < item.photos.length - 1 && setCurrentImg(currentImg + 1)
+                    }} className="arrow" icon={faAngleRight}/>
                 </div>
 
                 <div className="ml-50">
@@ -140,24 +133,28 @@ const SingleRecipeView = ({item}) => {
                             <div>Rating: {calcAverageRate()}</div>
                             <div>
                                 {calcAverageRate() === 1 && <FontAwesomeIcon className="star yellow" icon={faStar}/>}
-                                {calcAverageRate() === 2 && <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                </div>}
-                                {calcAverageRate() === 3 && <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                </div>}
-                                {calcAverageRate() === 4 && <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                </div>}
-                                {calcAverageRate() === 5 && <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                    <FontAwesomeIcon className="star yellow" icon={faStar}/>
-                                </div>}
+                                {calcAverageRate() === 2 &&
+                                    <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                    </div>}
+                                {calcAverageRate() === 3 &&
+                                    <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                    </div>}
+                                {calcAverageRate() === 4 &&
+                                    <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                    </div>}
+                                {calcAverageRate() === 5 &&
+                                    <div className="d-flex"><FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                        <FontAwesomeIcon className="star yellow" icon={faStar}/>
+                                    </div>}
                             </div>
                             <div>({item.average})</div>
                         </div>}
@@ -167,7 +164,8 @@ const SingleRecipeView = ({item}) => {
                     <div>Preparation time: {item.prepTime}</div>
                     <div>Preparation steps: {item.prepSteps.length}</div>
                     {!getToFavorites.includes(item) && <button onClick={addToFavorites}>Add to favorites</button>}
-                    {getToFavorites.includes(item) && <button onClick={removeFromFavorites}>Remove from favorites</button>}
+                    {getToFavorites.includes(item) &&
+                        <button onClick={removeFromFavorites}>Remove from favorites</button>}
                 </div>
             </div>
             <div>

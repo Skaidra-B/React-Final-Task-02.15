@@ -6,7 +6,7 @@ import mainContext from "../context/mainContext";
 const SingleRecipe = ({item, index}) => {
 
     const nav = useNavigate()
-    const {getToFavorites, setToFavorites, getRecipe, setRecipe, getReview, getRates} = useContext(mainContext)
+    const {getToFavorites, setToFavorites, getRecipe, setRecipe} = useContext(mainContext)
 
     function addToFavorites() {
         const favorite = getToFavorites.find(x => x.title === item.title)
