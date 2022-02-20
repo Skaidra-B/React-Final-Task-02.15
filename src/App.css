@@ -1,0 +1,89 @@
+.d-flex {
+    display: flex;
+}
+.column {
+    flex-direction: column;
+}
+input {
+    width: 300px;
+    margin: 5px;
+
+}
+.j-center {
+    justify-content: center;
+}
+.a-center {
+    align-items: center;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+ img {
+    width: 200px;
+    height: 200px;
+
+}
+.toolbar {
+    height: 60px;
+    background-color: rgba(232,221,202,0.73);
+    align-items: center;
+    padding-left: 20px;
+}
+.mt-100 {
+    margin-top: 100px;
+}
+.mr-5 {
+    margin-right: 5px;
+}
+.recipeCard {
+    margin: 3px;
+    background-color: rgba(232,228,126,0.73);
+    border-radius: 20px;
+    padding: 10px;
+}
+.singleRecipeCard {
+    margin: 10px;
+    background-color: rgba(232,228,126,0.73);
+    border-radius: 20px;
+    padding: 15px;
+}
+.space-btw {
+    justify-content: space-between;
+}
+.star {
+    font-size: 25px;
+    margin: 3px;
+}
+.review {
+    background-color: white;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+.carousel {
+    align-items: start;
+}
+.arrow {
+    font-size: 25px;
+    margin: 5px;
+    padding-bottom: 80px;
+    cursor: pointer;
+}
+.ml-50 {
+    margin-left: 30px;
+}
+.yellow {
+    background-color: yellow;
+}
+.allRecipes {
+    margin: 20px;
+}
+.filter {
+    margin-bottom: 20px;
+}
+ul {
+    margin: 0;
+}
